@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dialog-Box</title>
+</head>
+<style>
+    .product-images-container {
+        display: flex;
+        justify-content: center;
+    }
+    body {
+        margin: 0;
+        height: 100vh;
+        display: grid;
+        place-items: center;
+        background-color: #f3f3f3;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+
+
+    .card {
+        height: 400px;
+        width: 300px;
+        padding: 20px;
+        box-shadow: 1px 1px 15px 2px #a8afde;
+        cursor: pointer;
+        background-color: white;
+        text-align: center;
+        border: 0.5px solid rgba(37, 8, 255, 0.792);
+        border-radius: 15px;
+        background-color: #95f995;
+    }
+    #username{
+        height: 27px;
+        width: 250px;
+        border-radius: 5px;
+    }
+    #password{
+        height: 27px;
+        width: 250px;
+        border-radius: 5px;
+
+    }
+    .btn{
+        background-color: #3528c8;
+        color: #ffff1a ;
+        border-radius: 25px;
+        padding: 5px 20px;
+        font-size: 20px;
+        margin-top: 8px;
+        border: 1px;
+        cursor: pointer;
+    }
+    .toggle-password {
+      display: flex;
+      align-items: center;
+      margin-top: 0px;
+      margin-left: 0px;
+    }
+
+    .toggle-password input {
+      margin-right: 3px;
+    }
+    .overlay{
+        background-color: rgba(0, 0, 0, 0.6);
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        
+    }
+    .modal{
+        background-color: white;
+        width: 300px;
+        height: 150px;
+        border-radius: 5px;
+    }
+    .icon{
+        margin-left: 10px;
+        
+        height: 30px;
+        width: 30px;
+        margin-top: 15px;
+    }
+    .p1{
+        text-align: center;
+        font-size: 30px;
+    }
+    .close-button {
+      padding: 10px 20px;
+      border: none;
+      background-color: #007bff;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+      margin: 0px auto;
+    }
+
+    .close-button:hover {
+      background-color: #0056b3;
+    }
+
+</style>
+
+<body>
+    <div class="container card">
+    <h1 style="color: #034994; font-size: 30px;">LogIn</h1>
+    <form>
+        <p style="text-align: left; font-size: 20px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Username:</p>
+        <input type="text" id="username" placeholder="Enter your username" name="username"/><br/><br/>
+        <p style="text-align: left; font-size: 20px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Password:</p>
+        <input type="password" id="password" placeholder="Enter the password" name="password"/><br/>
+        <div class="toggle-password" style="text-align: left;">
+            <input type="checkbox" id="togglePassword" style="text-align: left;">
+            <label for="togglePassword" style="text-align: left;">Show Password&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fogot Password?</label><br/><br/><br/>
+          </div>
+        <button type="button" class="btn" id="btn" onclick="openModel()">Login</button>
+    </form>
+</div>
+<div class="overlay" id="overlay">
+    <div class="modal" id="modal">
+        <p class="p1">Login Successful<img src="check.png" class="icon"/></p>
+        
+
+    </div>
+
+</div>
+
+<script>
+     const passwordInput = document.getElementById('password');
+    const togglePassword = document.getElementById('togglePassword');
+
+    togglePassword.addEventListener('change', () => {
+      if (togglePassword.checked) {
+        passwordInput.type = 'text';
+      } else {
+        passwordInput.type = 'password';
+      }
+    });
+
+    function openModel(){
+        const overlayElement = document.getElementById('overlay')
+        overlayElement.style.display = "flex"
+        overlayElement.classList.add('active');
+
+
+overlayElement.addEventListener('click', (event) => {
+ 
+  if (event.target === overlayElement) {
+    overlayElement.style.display = "none";
+    overlayElement.classList.remove('active');
+  }
+});
+
+}
+    
+    
+
+
+</script>
+    
+</body>
+</html>
